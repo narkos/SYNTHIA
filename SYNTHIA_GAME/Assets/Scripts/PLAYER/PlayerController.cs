@@ -25,6 +25,8 @@ public class PlayerController : MonoBehaviour
     private CharacterController _controller;
     private Vector3             _velocity;
 
+    private BoxCollider _boxCollider;
+
     private bool _isReturning = false;
     private bool _isMoving = false;
 
@@ -41,6 +43,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        
         if((Input.GetAxisRaw("Horizontal") != 0.0f || Input.GetAxisRaw("Vertical") != 0.0f) && Time.time - _startTime > 0.25f)
         {
             _startTime = Time.time;
