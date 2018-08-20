@@ -32,7 +32,7 @@ public class BasicPlatformManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (objectQueue.Peek().localPosition.x + recycleOffset < PlayerForceController.distanceTraveled) {
+		if (objectQueue.Peek().localPosition.x + recycleOffset < PlayerController1.distanceTraveled) {
 			Recycle();
 		}
 	}
@@ -52,9 +52,9 @@ public class BasicPlatformManager : MonoBehaviour {
 
 		int materialIndex = Random.Range(0, materials.Length);
 		o.GetComponent<Renderer>().material = materials[materialIndex];
-		o.GetComponent<Collider>().material = physicMaterials[materialIndex];
+		//o.GetComponent<Collider>().material = physicMaterials[materialIndex];
 
-		_nextPosition.x += scale.x;
+		//_nextPosition.x += scale.x;
 		objectQueue.Enqueue(o);
 
 		_nextPosition += new Vector3(
