@@ -23,13 +23,13 @@ public class PlayerController1 : MonoBehaviour
     private float _gravity;
     public static float distanceTraveled;
 
-    [SerializeField]    private float _acceleration = 10.0f;
-    [SerializeField]    private float _deceleration = 150.0f;
-    [SerializeField]    private float _maxSpeed = 5.0f;
-                        private float _currentMaxSpeed;
-    [SerializeField]    private float _jumpSpeed = 100.0f;
-    [SerializeField]    private float _disableGravityDuration = 0.5f;
-    [SerializeField]    private float _jumpActionDuration;
+    [SerializeField] private float _acceleration = 10.0f;
+    [SerializeField] private float _deceleration = 150.0f;
+    [SerializeField] private float _maxSpeed = 5.0f;
+    private float _currentMaxSpeed;
+    [SerializeField] private float _jumpSpeed = 100.0f;
+    [SerializeField] private float _jumpActionDuration = 0.5f;
+    [SerializeField] private float _dashDuration = 0.5f;
     private float _lastActionTime;
     private float _lastJumpTime;
 
@@ -41,7 +41,7 @@ public class PlayerController1 : MonoBehaviour
     {
         _controller = GetComponent<CharacterController>();
         _lastJumpTime = _jumpActionDuration + 0.5f;
-        _lastActionTime = _disableGravityDuration + 0.5f;
+        _lastActionTime = _dashDuration + 0.5f;
         _currentMaxSpeed = _maxSpeed;
     }
 
@@ -60,47 +60,50 @@ public class PlayerController1 : MonoBehaviour
 
         //
 
-        if ((Input.GetAxisRaw("Horizontal") != 0.0f || Input.GetAxisRaw("Vertical") != 0.0f))
+        float horizontalInput = Input.GetAxisRaw("Horizontal");
+        float verticalInput = Input.GetAxisRaw("Vertical");
+
+        if ((horizontalInput != 0.0f || verticalInput != 0.0f))
         {
-            if (Input.GetAxisRaw("Vertical") > 0.0f && _lastJumpTime > 0.2f)
+            if (verticalInput > 0.0f && _lastJumpTime > 0.2f)
             {
-                _wantedDirection.y = _jumpSpeed * Input.GetAxisRaw("Vertical");
+                _wantedDirection.y = _jumpSpeed * verticalInput;
                 _lastJumpTime = 0.0f;
-                _lastActionTime = _disableGravityDuration + 0.5f;
+                _lastActionTime = _dashDuration + 0.5f;
             }
-            if (Input.GetAxisRaw("Horizontal") != 0.0f && _lastActionTime > 0.2f)
+            if (horizontalInput != 0.0f && _lastActionTime > 0.2f)
             {
-                _wantedDirection.x += _jumpSpeed * Input.GetAxisRaw("Horizontal");
+                //_wantedDirection.x += (_wantedDirection.x * 1.2f);
+                _wantedDirection.x = horizontalInput > 0.0f ? _wantedDirection.x + _wantedDirection.x * 1.2f : _wantedDirection.x * 0.8f;
                 _wantedDirection.y = 0.0f;
                 _lastActionTime = 0.0f;
                 _lastJumpTime = _jumpActionDuration + 0.5f;
-                if(!_controller.isGrounded)
+                if (!_controller.isGrounded && horizontalInput > 0.0f)
                 {
-                    _currentMaxSpeed += 5.0f;
-                    print(_currentMaxSpeed);
+                    _currentMaxSpeed *= 1.2f;
+                }
+                else
+                {
+                    _currentMaxSpeed *= 0.8f;
                 }
             }
-
         }
 
-        
+
         if (InActionState())
         {
             _wantedDirection.y = 0.0f;
-        } else if (!InJumpActionState()) {
+        }
+        else if (!InJumpActionState())
+        {
             _wantedDirection.y += _gravity * Time.deltaTime;
         }
 
 
         if (!InActionState())
         {
-            //_wantedDirection.x = Mathf.Min(Mathf.Abs(_wantedDirection.x) + _acceleration * Time.deltaTime, 20.0f);
-            if (_wantedDirection.x > _currentMaxSpeed)
-            {
-                _wantedDirection.x = _wantedDirection.x - (_deceleration * Time.deltaTime);
-            } else {
-                _wantedDirection.x = Mathf.Min(Mathf.Abs(_wantedDirection.x) + _acceleration * Time.deltaTime, _currentMaxSpeed);
-            }
+            _wantedDirection.x += _acceleration * Time.deltaTime;
+            _wantedDirection.x = Mathf.Clamp(_wantedDirection.x, -_currentMaxSpeed, _currentMaxSpeed);
         }
         _controller.Move(_wantedDirection * Time.deltaTime);
     }
@@ -121,10 +124,10 @@ public class PlayerController1 : MonoBehaviour
     {
         return new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0.0f);
     }
-    
+
     private bool InActionState()
     {
-        return _lastActionTime <= _disableGravityDuration;
+        return _lastActionTime <= _dashDuration;
     }
 
     private bool InJumpActionState()

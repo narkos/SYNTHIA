@@ -7,10 +7,12 @@ public class BasicPlatformManager : MonoBehaviour {
 	public int numberOfObjects;
 	public float recycleOffset;
 	public Vector3 startPosition;
+
 	public Vector3 minSize;
 	public Vector3 maxSize;
 	public Vector3 minGap, maxGap;
-	public float minY, maxY;
+	[Space]
+	public float zRotation, minY, maxY;
 	[Space]
 	public Material[] materials;
 	public PhysicMaterial[] physicMaterials;
@@ -22,7 +24,9 @@ public class BasicPlatformManager : MonoBehaviour {
 		objectQueue = new Queue<Transform>(numberOfObjects);
 		for (int i = 0; i < numberOfObjects; i++)
 		{
-			objectQueue.Enqueue((Transform)Instantiate(prefab));
+			Transform newObject = (Transform)Instantiate(prefab);
+			newObject.transform.parent = transform;
+			objectQueue.Enqueue(newObject);
 		}
 		_nextPosition = startPosition;
 		for (int i = 0; i < numberOfObjects; i++) {
@@ -45,10 +49,12 @@ public class BasicPlatformManager : MonoBehaviour {
 		Vector3 position = _nextPosition;
 		position.x += scale.x * 0.5f;
 		position.y += scale.y * 0.5f;
+		position.z += scale.z * 0.5f;
 
 		Transform o = objectQueue.Dequeue();
 		o.localScale = scale;
 		o.localPosition = position;
+		o.rotation = Quaternion.AngleAxis(zRotation, Vector3.forward);
 
 		int materialIndex = Random.Range(0, materials.Length);
 		o.GetComponent<Renderer>().material = materials[materialIndex];

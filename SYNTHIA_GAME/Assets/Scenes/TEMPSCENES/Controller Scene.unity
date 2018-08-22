@@ -459,13 +459,13 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _gravity: -100
+  _gravity: -500
   _acceleration: 10
   _deceleration: 250
-  _maxSpeed: 20
+  _maxSpeed: 2
   _jumpSpeed: 5
-  _disableGravityDuration: 0.5
   _jumpActionDuration: 0.5
+  _dashDuration: 0.5
   ui_velText: {fileID: 1853721116}
   ui_xMax: {fileID: 75511469}
 --- !u!143 &681301064
@@ -480,7 +480,7 @@ CharacterController:
   serializedVersion: 2
   m_Height: 1
   m_Radius: 0.5
-  m_SlopeLimit: 45
+  m_SlopeLimit: 60
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
@@ -650,9 +650,116 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2112625200}
+  - {fileID: 1214455122}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1214455121
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1214455122}
+  - component: {fileID: 1214455123}
+  - component: {fileID: 1214455124}
+  - component: {fileID: 1214455125}
+  m_Layer: 0
+  m_Name: Background
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1214455122
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1214455121}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1016295644}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1214455123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1214455121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72bc8bbc8dd637749ac2f46f6d7e2700, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 4899437620871026, guid: 734f611c43ddea84d860099bc54c12dc, type: 2}
+  numberOfObjects: 10
+  recycleOffset: 50
+  startPosition: {x: -25, y: -25, z: 25}
+  minSize: {x: 5, y: 15, z: 2}
+  maxSize: {x: 10, y: 25, z: 3}
+  minGap: {x: 0, y: 0, z: 0}
+  maxGap: {x: 5, y: 0, z: 0}
+  zRotation: 0
+  minY: -25
+  maxY: -25
+  materials:
+  - {fileID: 2100000, guid: cb02b8cb707f5f4458055325a9c5ee04, type: 2}
+  physicMaterials: []
+--- !u!114 &1214455124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1214455121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72bc8bbc8dd637749ac2f46f6d7e2700, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 4899437620871026, guid: 734f611c43ddea84d860099bc54c12dc, type: 2}
+  numberOfObjects: 10
+  recycleOffset: 50
+  startPosition: {x: -25, y: -25, z: 10}
+  minSize: {x: 0.5, y: 15, z: 2}
+  maxSize: {x: 20, y: 25, z: 3}
+  minGap: {x: 0.5, y: 0, z: 0}
+  maxGap: {x: 20, y: 0, z: 0}
+  zRotation: 0
+  minY: -25
+  maxY: -25
+  materials:
+  - {fileID: 2100000, guid: cb02b8cb707f5f4458055325a9c5ee04, type: 2}
+  physicMaterials: []
+--- !u!114 &1214455125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1214455121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72bc8bbc8dd637749ac2f46f6d7e2700, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 4899437620871026, guid: 734f611c43ddea84d860099bc54c12dc, type: 2}
+  numberOfObjects: 10
+  recycleOffset: 50
+  startPosition: {x: -25, y: -25, z: 1}
+  minSize: {x: 25, y: 20, z: 2}
+  maxSize: {x: 25, y: 25, z: 3}
+  minGap: {x: 25, y: 0, z: 0}
+  maxGap: {x: 50, y: 0, z: 0}
+  zRotation: 25
+  minY: -25
+  maxY: -25
+  materials:
+  - {fileID: 2100000, guid: 43d1cd4429ace5c4ca3d39b2bcc4b447, type: 2}
+  physicMaterials: []
 --- !u!1 &1297650280
 GameObject:
   m_ObjectHideFlags: 0
@@ -664,7 +771,6 @@ GameObject:
   - component: {fileID: 1297650283}
   - component: {fileID: 1297650281}
   - component: {fileID: 1297650285}
-  - component: {fileID: 1297650287}
   - component: {fileID: 1297650282}
   - component: {fileID: 1297650286}
   m_Layer: 0
@@ -860,47 +966,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _target: {fileID: 681301062}
-  _viewDistance: {x: 20, y: 10, z: -50}
+  _viewDistance: {x: 20, y: 10, z: -30}
   _damp: 0.1
---- !u!114 &1297650287
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1297650280}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8a636f62116c0a40bbfefdf876d4608, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  boost: 3.5
-  positionLerpTime: 0.2
-  mouseSensitivityCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0.5
-      inSlope: 4.6264863
-      outSlope: 4.6264863
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.11557238
-    - serializedVersion: 3
-      time: 1
-      value: 2.5
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  rotationLerpTime: 0.01
-  invertY: 0
 --- !u!1 &1368922630
 GameObject:
   m_ObjectHideFlags: 0
@@ -1012,7 +1079,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0.000030517578, y: -101}
+  m_AnchoredPosition: {x: 0, y: -101}
   m_SizeDelta: {x: 150, y: 75}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1411927026
@@ -1684,11 +1751,12 @@ MonoBehaviour:
   prefab: {fileID: 4899437620871026, guid: 734f611c43ddea84d860099bc54c12dc, type: 2}
   numberOfObjects: 2
   recycleOffset: 25
-  startPosition: {x: -25, y: -10, z: 0}
+  startPosition: {x: -25, y: -10, z: 1.5}
   minSize: {x: 50, y: 1, z: 3}
   maxSize: {x: 50, y: 1, z: 3}
   minGap: {x: 0, y: 0, z: 0}
   maxGap: {x: 0, y: 0, z: 0}
+  zRotation: 0
   minY: -10
   maxY: -10
   materials:
