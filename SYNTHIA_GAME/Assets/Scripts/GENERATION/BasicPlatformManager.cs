@@ -12,7 +12,7 @@ public class BasicPlatformManager : MonoBehaviour {
 	public Vector3 maxSize;
 	public Vector3 minGap, maxGap;
 	[Space]
-	public float zRotation, minY, maxY;
+	public float yRotation, zRotation, minY, maxY;
 	[Space]
 	public Material[] materials;
 	public PhysicMaterial[] physicMaterials;
@@ -36,7 +36,7 @@ public class BasicPlatformManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (objectQueue.Peek().localPosition.x + recycleOffset < PlayerController1.distanceTraveled) {
+		if (objectQueue.Peek().localPosition.x + recycleOffset < PlayAreaController.distanceTraveled) {
 			Recycle();
 		}
 	}
@@ -55,7 +55,7 @@ public class BasicPlatformManager : MonoBehaviour {
 		o.localScale = scale;
 		o.localPosition = position;
 		o.rotation = Quaternion.AngleAxis(zRotation, Vector3.forward);
-
+		o.rotation = Quaternion.AngleAxis(yRotation, Vector3.up);
 		int materialIndex = Random.Range(0, materials.Length);
 		o.GetComponent<Renderer>().material = materials[materialIndex];
 		//o.GetComponent<Collider>().material = physicMaterials[materialIndex];

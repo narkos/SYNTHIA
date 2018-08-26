@@ -1,0 +1,203 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1732415895846744}
+  m_IsPrefabAsset: 1
+--- !u!1 &1732415895846744
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4158410917320292}
+  m_Layer: 0
+  m_Name: SPAWNERS
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1899958849913942
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4558401481519388}
+  - component: {fileID: 114418104492479222}
+  - component: {fileID: 114107865539458846}
+  - component: {fileID: 114691679373854408}
+  m_Layer: 0
+  m_Name: Background
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1931246599653570
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4998295948979604}
+  - component: {fileID: 114831663206756780}
+  m_Layer: 0
+  m_Name: Platforms
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4158410917320292
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1732415895846744}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.09865752, y: -0.06613065, z: -1.5941662}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4998295948979604}
+  - {fileID: 4558401481519388}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4558401481519388
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1899958849913942}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4158410917320292}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4998295948979604
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1931246599653570}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4158410917320292}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114107865539458846
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1899958849913942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72bc8bbc8dd637749ac2f46f6d7e2700, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 4899437620871026, guid: 734f611c43ddea84d860099bc54c12dc, type: 2}
+  numberOfObjects: 10
+  recycleOffset: 50
+  startPosition: {x: -25, y: -25, z: 10}
+  minSize: {x: 0.5, y: 15, z: 2}
+  maxSize: {x: 20, y: 25, z: 3}
+  minGap: {x: 0.5, y: 0, z: 0}
+  maxGap: {x: 20, y: 0, z: 0}
+  zRotation: 0
+  minY: -25
+  maxY: -25
+  materials:
+  - {fileID: 2100000, guid: cb02b8cb707f5f4458055325a9c5ee04, type: 2}
+  physicMaterials: []
+--- !u!114 &114418104492479222
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1899958849913942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72bc8bbc8dd637749ac2f46f6d7e2700, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 4899437620871026, guid: 734f611c43ddea84d860099bc54c12dc, type: 2}
+  numberOfObjects: 10
+  recycleOffset: 50
+  startPosition: {x: -25, y: -25, z: 25}
+  minSize: {x: 5, y: 15, z: 2}
+  maxSize: {x: 10, y: 25, z: 3}
+  minGap: {x: 0, y: 0, z: 0}
+  maxGap: {x: 5, y: 0, z: 0}
+  zRotation: 0
+  minY: -25
+  maxY: -25
+  materials:
+  - {fileID: 2100000, guid: cb02b8cb707f5f4458055325a9c5ee04, type: 2}
+  physicMaterials: []
+--- !u!114 &114691679373854408
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1899958849913942}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72bc8bbc8dd637749ac2f46f6d7e2700, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 4899437620871026, guid: 734f611c43ddea84d860099bc54c12dc, type: 2}
+  numberOfObjects: 10
+  recycleOffset: 50
+  startPosition: {x: -25, y: -25, z: 1}
+  minSize: {x: 25, y: 20, z: 2}
+  maxSize: {x: 25, y: 25, z: 3}
+  minGap: {x: 25, y: 0, z: 0}
+  maxGap: {x: 50, y: 0, z: 0}
+  zRotation: 25
+  minY: -25
+  maxY: -25
+  materials:
+  - {fileID: 2100000, guid: 43d1cd4429ace5c4ca3d39b2bcc4b447, type: 2}
+  physicMaterials: []
+--- !u!114 &114831663206756780
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1931246599653570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72bc8bbc8dd637749ac2f46f6d7e2700, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 4899437620871026, guid: 734f611c43ddea84d860099bc54c12dc, type: 2}
+  numberOfObjects: 2
+  recycleOffset: 25
+  startPosition: {x: -25, y: -10, z: 1.5}
+  minSize: {x: 50, y: 1, z: 3}
+  maxSize: {x: 50, y: 1, z: 3}
+  minGap: {x: 0, y: 0, z: 0}
+  maxGap: {x: 0, y: 0, z: 0}
+  zRotation: 0
+  minY: -10
+  maxY: -10
+  materials:
+  - {fileID: 2100000, guid: cb02b8cb707f5f4458055325a9c5ee04, type: 2}
+  physicMaterials: []
